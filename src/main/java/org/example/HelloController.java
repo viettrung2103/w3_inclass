@@ -30,6 +30,9 @@ public class HelloController {
     @FXML
     private Button addTranslationButton;
 
+    @FXML
+    private Label errorLabel;
+
     Locale locale;
     ResourceBundle rb;
 
@@ -120,12 +123,19 @@ public class HelloController {
 
     @FXML
     public void addButtonClick() {
+
         String selectedLanguage = languageSelector.getValue();
         String selectedLanguageCode = mapLanguageStringToLanguageCode(selectedLanguage);
         String inputKeyName = keyNameField.getText();
         String inputTranslationText = newTranslationField.getText();
+        if (keyNameField.equals("")&& newTranslationField.equals("")) {
+            displayLocalizedError();
+        }else {
         upsertKeyAndTranslation(selectedLanguageCode, inputKeyName, inputTranslationText);
         fetchLocalizedData(selectedLanguageCode);
+        keyNameField.clear();
+        newTranslationField.clear();
+        }
     }
 
     public void upsertKeyAndTranslation(
@@ -156,5 +166,17 @@ public class HelloController {
         addTranslationButton.setText(rb.getString("addTranslationButton"));
         keyNameField.setPromptText(rb.getString("keyNameField"));
         newTranslationField.setPromptText(rb.getString("newTranslationField"));
+        refreshLocalizedError();
+    }
+
+    public void displayLocalizedError(){
+        String errorText = rb.getString("errorText");
+        errorLabel.setText(errorText);
+    }
+
+    public void refreshLocalizedError(){
+        if (!errorLabel.getText().equals("")) {
+            displayLocalizedError();
+        }
     }
 }

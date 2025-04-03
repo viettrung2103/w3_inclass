@@ -12,6 +12,7 @@
       <Label fx:id="welcomeText" text="Employees Job Titlte" />
       <ComboBox fx:id="languageSelector" prefWidth="150.0" />
       <ListView fx:id="employeeList" prefHeight="200.0" prefWidth="200.0" />
+      <Label fx:id="errorLabel" />
       <TextField fx:id="keyNameField" prefHeight="26.0" prefWidth="453.0" promptText="Enter Key Name" />
       <TextField fx:id="newTranslationField" promptText="Enter Translation" />
       <Button fx:id="addTranslationButton" mnemonicParsing="false" onMouseClicked="#addButtonClick" text="Add Translation" />
