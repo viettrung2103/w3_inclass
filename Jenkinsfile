@@ -15,7 +15,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch:"master",url:'git@github.com:viettrung2103/w3_inclass.git'
+                git branch:"master",url:'https://github.com/viettrung2103/w3_inclass.git'
             }
         }
         stage('Build') {
